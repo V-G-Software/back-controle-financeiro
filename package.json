@@ -1,0 +1,48 @@
+{
+  "name": "back-lizardium",
+  "version": "1.0.0",
+  "author": "IgorGabrielNunes <profissional.igornunes@gmail.com>",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "knex": "ts-node -r dotenv/config ./node_modules/.bin/knex --knexfile ./src/infra/knexfile.ts",
+    "build:clean": "rm -rf dist/ && yarn generate && yarn tsc",
+    "build": "yarn generate && yarn tsc",
+    "start": "yarn build && node dist/index.js",
+    "dev": "tsx --watch src/index.ts ",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepare": "husky ./",
+    "generate": "graphql-codegen"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@eddeee888/gcg-typescript-resolver-files": "^0.8.1",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.12",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.18.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "graphql": "^16.8.1",
+    "graphql-scalars": "^1.23.0",
+    "graphql-yoga": "^5.3.1",
+    "husky": "^9.0.11",
+    "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
+    "pg": "^8.11.5",
+    "prettier": "^3.2.5",
+    "zod": "^3.23.8"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1"
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+}

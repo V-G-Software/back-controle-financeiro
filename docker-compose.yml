@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:14.6-alpine
+    container_name: template_db
+    environment:
+      POSTGRES_DB: ${DB_NAME:-root}
+      POSTGRES_USER: ${DB_USER:-root}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-root}
+    ports:
+      - '${DB_PORT:-55432}:5432'
+    volumes:
+      - ./docker/pg-init-scripts.sh:/pg-init-scripts.sh

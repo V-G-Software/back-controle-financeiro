@@ -1,0 +1,11 @@
+node_modules
+dist
+
+.env
+
+#Generated files
+
+src/server/schema/generated/*
+!src/server/schema/generated/index.ts
+
+.DS_Store
