@@ -1,0 +1,32 @@
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  password: String!
+  phone: String!
+  cpf: String!
+  isAdmin: Boolean!
+  autorizado: Boolean!
+}
+
+input UserInput {
+  name: String!
+  email: String!
+  password: String!
+  phone: String
+  cpf: String!
+  administrador: Boolean
+  autorizado: Boolean
+}
+
+type Query {
+  loadUsers: [User!]! @auth
+  getUser(id: ID!): User! @auth
+}
+
+type Mutation {
+  createUser(data: UserInput!): Boolean!
+  autorizarUser(id: ID!): Boolean! @auth
+  editUser(data: UserInput!, id: ID!): Boolean! @auth
+  deleteUser(id: ID!): Boolean! @auth
+}

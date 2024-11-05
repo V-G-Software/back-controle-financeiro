@@ -1,32 +1,23 @@
 {
-  "ts-node": {
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  },
   "compilerOptions": {
+    "skipLibCheck": true,
     "rootDirs": ["./src"],
-    "outDir": "./dist",
-    // "esModuleInterop": true,
+    "outDir": "dist",
+    "lib": ["es2021", "dom"],
+    "target": "es2020",
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "allowJs": true,
+    "types": ["node"],
     "paths": {
       "@/*": ["./src/*"],
-      "~types": ["./src/server/types.generated.d.ts"],
-      "~resolvers": ["./src/server/resolvers.generated.ts"],
-      "~typeDefs": ["./src/server/typeDefs.generated.ts"]
-    },
-
-    "target": "ES2021" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-    "lib": ["ES2021"],
-    "module": "CommonJS" /* Specify what module code is generated. */,
-    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
-    "types": ["node"],
-    "isolatedModules": true /* Ensure that each file can be safely transpiled without relying on other imports. */,
-    "allowSyntheticDefaultImports": true /* Allow 'import x from y' when a module doesn't have a default export. */,
-    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
-    // /* Type Checking */
-    "strict": true /* Enable all strict type-checking options. */
-    // "skipLibCheck": true /* Skip type checking all .d.ts files. */
+      "~types": ["./src/graphql/modules/types.generated.ts"],
+      "~models": ["./src/models"]
+    }
   },
   "include": ["src/**/*"],
-  "exclude": ["**/*.test.js", "node_modules"]
+  "exclude": ["**/*.test.js"]
 }

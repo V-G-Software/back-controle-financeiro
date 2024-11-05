@@ -1,12 +1,13 @@
-import { Context } from "@/server/contracts";
+import { type Context } from "@/server/context";
 
-export async function applyFindAll(
+export async function applyFindAll<T>(
     context: Context,
     table: string,
-    id:   string | number,
     select: string[]
-): Promise<Array<Record<string, string | number>>> {
+): Promise<T[]> {
     const { database } = context
-    
-    return  database(table).select(select)
+
+    const result = await database(table).select(select);
+
+    return result as T[]
 }

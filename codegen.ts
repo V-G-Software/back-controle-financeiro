@@ -1,28 +1,33 @@
-import type { CodegenConfig } from "@graphql-codegen/cli";
+import type { CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
-  schema: "src/server/schema/**/*.graphql",
-  generates: {
-    "./src/server/schema/generated/": {
-      config: {
-        useIndexSignature: true,
-      },
-      plugins: ["typescript", "typescript-resolvers"],
-      // @ts-expect-error - This is a custom preset
-      preset: "@eddeee888/gcg-typescript-resolver-files",
-      presetConfig: {
-        resolverTypesPath: "./types.generated.d.ts",
-        typesPluginsConfig: {
-          contextType: "../../contracts#Context",
-          optionalResolveType: false,
-          skipTypename: true,
-          namingConvention: {
-            enumValues: "change-case-all#upperCase",
-          },
-        },
-      },
-    },
+  overwrite: true,
+  schema: './src/graphql/modules/**/*.graphqls',
+  config: {
+    useIndexSignature: true,
+    contextType: '../contracts/context#Context'
   },
-  hooks: { afterAllFileWrite: ["prettier --write"] },
-};
-export default config;
+  generates: {
+    'src/graphql/modules': {
+      // @ts-expect-error - This is a custom preset
+      preset: '@eddeee888/gcg-typescript-resolver-files',
+      presetConfig: {
+        typesPluginsConfig: {
+          contextType: '../../server/context#Context',
+          optionalResolveType: true,
+          namingConvention: {
+            enumValues: 'change-case-all#upperCase'
+          }
+        },
+        externalResolvers: {
+          LocalDate: '~../../support/scalares/localDate#LocalDateResolver'
+        }
+      }
+    }
+  },
+  hooks: {
+    afterOneFileWrite: ['prettier src/graphql/**/*.ts --w']
+  }
+}
+
+export default config

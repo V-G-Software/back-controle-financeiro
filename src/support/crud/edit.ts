@@ -1,18 +1,18 @@
-import { Context } from "@/server/contracts";
+import { type Context } from "@/server/context";
 
-export async function applyUpdate(
+export async function applyUpdate<TWhere extends Record<string, string | number | boolean>, TData>(
     context: Context,
     table: string,
-    where: Record<string, string | number>,
-    data:  Record<string, string | number>
-): Promise<Boolean> {
-    const { database } = context
-    
-    const result = await database(table).where(where).update(data)
+    where: TWhere,
+    data: TData
+): Promise<boolean> {
+    const { database } = context;
+
+    const result = await database(table).where(where).update(data);
 
     if (result === 0) {
-        throw new Error("Erro na edição dos dados!")
+        throw new Error("Erro na edição dos dados!");
     }
 
-    return true
+    return true;
 }

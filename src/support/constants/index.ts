@@ -1,0 +1,8 @@
+export const CACHE_TIME_HELPER = Object.freeze({
+  TEN_MINUTES: 600,
+  HALF_HOUR: 1800,
+  TWO_HOURS: 7200,
+  ONE_HOUR: 3600,
+  ONE_DAY: 86400000,
+  ONE_WEEK: 604800000,
+});

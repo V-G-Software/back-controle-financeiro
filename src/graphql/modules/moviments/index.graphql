@@ -1,0 +1,28 @@
+type Moviment {
+  id: ID!
+  description: String!
+  name: String!
+  status: Int!
+  rate: Float
+  sale: Float
+  deletedAt: String
+}
+
+input MovimentInput {
+  description: String!
+  name: String!
+  status: Int!
+  rate: Float
+  sale: Float
+}
+
+type Query {
+  Moviment: [Moviment!]! @auth
+  Moviments(id: ID!): Moviment! @auth
+}
+
+type Mutation {
+  createMoviment(data: MovimentInput!): Boolean! @auth
+  editMoviment(data: MovimentInput, id: ID!): Boolean! @auth
+  delMoviment(id: ID!): Boolean! @auth
+}
