@@ -1,0 +1,31 @@
+type Help {
+  id: ID!
+  description: String!
+  title: String!
+  status: Int!
+  createdAt: String
+  updatedAt: String
+  deletedAt: String
+  userCreated: User
+  userUpdated: User
+  userDeleted: User
+  user: User!
+}
+
+input HelpInput {
+  description: String!
+  title: String!
+}
+
+type Query {
+  GetAllHelps: [Help!]! @auth
+  GetHelp(id: ID!): Help! @auth
+}
+
+type Mutation {
+  createHelp(data: HelpInput!): Boolean! @auth
+  editHelp(data: HelpInput, id: ID!): Boolean! @auth
+  initAtendimento(id: ID!): Boolean! @auth
+  closeHelp(id: ID!): Boolean! @auth
+  deleteHelp(id: ID!): Boolean! @auth
+}

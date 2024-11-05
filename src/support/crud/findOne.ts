@@ -1,12 +1,12 @@
-import { Context } from "@/server/contracts";
+import { type Context } from "@/server/context";
 
-export async function applyFindOne(
+export async function applyFindOne<T>(
     context: Context,
     table: string,
     id:   string | number,
     select: string[]
-): Promise<Record<string, string | number>> {
+): Promise<T> {
     const { database } = context
-    
-    return await database(table).where(id).select(select)
+
+    return await database(table).where(id).select(select).first()
 }

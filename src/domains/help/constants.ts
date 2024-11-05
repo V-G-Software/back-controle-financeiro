@@ -1,0 +1,5 @@
+export const STATUS_HELP = {
+  SOLICITADO: 1,
+  FINALIZADO: 0,
+  ANDAMENTO: 2
+}

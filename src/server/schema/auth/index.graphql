@@ -1,7 +1,0 @@
-type Auth {
-  token: String!
-}
-
-type Mutation {
-  login(email: String!, password: String!): Auth!
-}
